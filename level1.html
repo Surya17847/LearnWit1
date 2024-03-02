@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Levels</title>
+  <link rel="stylesheet" href="level1.css">
+</head>
+<body>
+  <header>
+    <h1><img src="LOGO.jpg" alt="logo" width="50px" height="40px"></h1>
+  </header>
+
+  <div class="quiz-section">
+    <span id="timer">Time Left: <span id="time">00:00</span></span>
+    <div id="quiz">
+      <h1 class="question" id="question">Question</h1>
+      <ul>
+        <li>
+          <input type="radio" name="answer" class="answer" id="a">
+          <label for="a" id="option1">Option 1</label>
+        </li>
+        <li>
+          <input type="radio" name="answer" class="answer" id="b">
+          <label for="b" id="option2">Option 2</label>
+        </li>
+        <li>
+          <input type="radio" name="answer" class="answer" id="c">
+          <label for="c" id="option3">Option 3</label>
+        </li>
+        <li>
+          <input type="radio" name="answer" class="answer" id="d">
+          <label for="d" id="option4">Option 4</label>
+        </li>
+      </ul>
+
+      <div class="button">
+        <button type="button" id="next">Next</button>
+        <button type="button" id="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="level_1.js"></script>
+</body>
+</html>

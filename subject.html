@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQUIZ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e272e; /* Dark blue */
+            color: #fff; /* White text */
+        }
+
+        h1 {
+            margin: 20px;
+        }
+
+        .navbar {
+            background-color: #2196f3;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: #0b7dda;
+        }
+
+        .container {
+            display: flex;
+            justify-content: flex-start; /* Align cards to the left */
+            overflow-x: scroll; /* Enable horizontal scrolling */
+            padding: 20px;
+            margin-bottom: 20px; /* Add space at the bottom for the details section */
+        }
+
+        .card {
+            flex: 0 0 300px;
+            box-sizing: border-box;
+            margin-right: 20px;
+            overflow: hidden;
+            background-color: #333; /* Dark gray */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .content {
+            padding: 15px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #fff;
+        }
+
+        .sticker {
+            display: inline-block;
+            width: 100%;
+            height: 50px;
+            background-color: #ffd700; /* Yellow */
+            border-radius: 0 0 12px 12px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .sticker:hover {
+            opacity: 0.8; /* Add a hover effect */
+        }
+
+        #OPERATING_SYSTEM {
+            background-color: #4caf50; /* Green */
+        }
+
+        #MICROPROCESSOR {
+            background-color: #2196f3; /* Blue */
+        }
+
+        #PYTHON {
+            background-color: #ff5722; /* Orange */
+        }
+
+        #AOA {
+            background-color: #9c27b0; /* Purple */
+        }
+
+        #JS {
+            background-color: #f44336; /* Red */
+        }
+
+        .details {
+            padding: 20px;
+            background-color: #2196f3; /* Light blue */
+            border-radius: 12px;
+            color: #000; /* Dark text */
+        }
+        #rules {
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">        
+    <a  href="contact.html">Contact Us</a>
+    <a  href="index.html">Home</a>
+</div>
+
+<h1><img src="LOGO.jpg" alt=" logo" width="50px" height="40px" ></h1>
+
+<div class="container">
+    <div class="card">
+        <div class="content">
+            <h2>OPERATING SYSTEM</h2>
+            <p>Understanding the backbone of computer systems.</p>
+        </div>
+        <a class="sticker" id="OPERATING_SYSTEM" href="OS_level.html">OS</a>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <h2>MICROPROCESSOR</h2>
+            <p>Mastering principles of microprocessors.</p>
+        </div>
+        <a class="sticker" id="MICROPROCESSOR" href="MP_level.html">MP</a>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <h2>PYTHON</h2>
+            <p>Harnessing the power of versatile programming.</p>
+        </div>
+        <a class="sticker" id="PYTHON" href="py_level.html">PHY</a>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <h2>AOA</h2>
+            <p>Exploring the art of algorithm analysis.</p>
+        </div>
+        <a class="sticker" id="AOA" href="AOA_level.html">AOA</a>
+    </div>
+
+    <div class="card">
+        <div class="content">
+            <h2>DBMS</h2>
+            <p>Navigating the world of database management.</p>
+        </div>
+        <a class="sticker" id="DBMS" href="DBMS_level.html">DBMS</a>
+    </div>
+</div>
+
+<div class="details">
+    <h2>Rules to Attempt the Quiz</h2>
+    <div id="rules" font="20px">
+        <p>
+            1.There are 10 questions in each quiz <br><br>
+            2.Only 1 question will be displayed at a time <br><br>
+            3.Attempt the question to move to next question <br><br>
+            4.One point per each coorect answer <br><br>
+            5.Score Maximum by giving correct answers.
+        </p>
+    </div>
+</body>
+</html>
