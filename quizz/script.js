@@ -17,7 +17,7 @@ const startBtn = document.querySelector(".start"),
 
 let questions = [],
   time = 30,
-  score = 0,
+  // score = 0,
   currentQuestion,
   timer;
 

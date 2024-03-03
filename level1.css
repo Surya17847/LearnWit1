@@ -1,3 +1,4 @@
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
@@ -17,31 +18,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(sideimg1.jpg);
-    background-size: cover;
 }
 
+/* Quiz section styles */
 .quize-section {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.8); /* Darken the background */
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
     max-width: 600px;
     padding: 20px;
     text-align: center;
+    margin: 20px auto; /* Center the content horizontally */
 }
 
-/* Style the quiz content */
+/* Quiz content styles */
 #quiz {
     color: white;
 }
 
-/* Style the question */
+/* Question styles */
 .question {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-/* Style the options */
+/* Options styles */
 ul {
     list-style-type: none;
     padding: 0;
@@ -51,18 +52,28 @@ li {
     margin-bottom: 10px;
 }
 
+.option {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
 .answer {
     margin-right: 10px;
 }
 
-/* Style the submit button */
+/* Button styles */
 .button {
     text-align: center;
     margin-top: 40px;
 }
 
 #submit,
-#next {
+#next,
+#previous {
     padding: 10px 20px;
     font-size: 18px;
     background-color: #333;
@@ -75,7 +86,8 @@ li {
 
 /* Change button color on hover */
 #submit:hover,
-#next:hover {
+#next:hover,
+#previous:hover {
     background-color: #555;
 }
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQUIZ</title>
+    <link rel="icon" href="icon.ico" type="image/x-icon" />
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -38,30 +39,36 @@
 
         .container {
             display: flex;
-            justify-content: flex-start; /* Align cards to the left */
-            overflow-x: scroll; /* Enable horizontal scrolling */
+            overflow-x: auto; /* Enable horizontal scrolling */
             padding: 20px;
             margin-bottom: 20px; /* Add space at the bottom for the details section */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS Safari */
+            width: calc(100vw - 40px); /* Adjust width to fit three cards per page */
         }
 
         .card {
-            flex: 0 0 300px;
+            width: calc(100% / 3 - 20px); /* Adjust width to fit three cards per page */
             box-sizing: border-box;
             margin-right: 20px;
             overflow: hidden;
             background-color: #333; /* Dark gray */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
             border-radius: 12px;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Add transition */
+        }
+
+        .card:last-child {
+            margin-right: 0;
         }
 
         .card:hover {
             transform: scale(1.05);
+            box-shadow: 0 4px 8px rgb(0, 0, 0,0.3), 0 0 0 5px #1cdef0; /* White box shadow */
         }
 
         .card img {
             width: 100%;
-            height: 300px;
+            height: 200px;
             object-fit: cover;
             border-radius: 12px 12px 0 0;
         }
@@ -87,40 +94,49 @@
             font-weight: bold;
             color: #333;
             text-decoration: none; /* Remove underline */
+            transition: background-color 0.3s ease-in-out; /* Add transition */
         }
 
         .sticker:hover {
-            opacity: 0.8; /* Add a hover effect */
-        }
-
-        #OPERATING_SYSTEM {
-            background-color: #4caf50; /* Green */
-        }
-
-        #MICROPROCESSOR {
-            background-color: #2196f3; /* Blue */
-        }
-
-        #PYTHON {
-            background-color: #ff5722; /* Orange */
-        }
-
-        #AOA {
-            background-color: #9c27b0; /* Purple */
-        }
-
-        #JS {
-            background-color: #f44336; /* Red */
+            background-color: #fada5e; /* Add hover effect */
         }
 
         .details {
             padding: 20px;
-            background-color: #2196f3; /* Light blue */
+            background-color: #0e0991; /* Light blue */
             border-radius: 12px;
             color: #000; /* Dark text */
+            margin-bottom: 20px;
         }
+
         #rules {
             color: whitesmoke;
+            font-size: 18px; /* Increase font size */
+        }
+
+        #rules p {
+            margin-bottom: 10px;
+        }
+
+        /* Color classes for cards */
+        .os {
+            background-color: #4caf50; /* Green */
+        }
+
+        .mp {
+            background-color: #2196f3; /* Blue */
+        }
+
+        .python {
+            background-color: #ff5722; /* Orange */
+        }
+
+        .aoa {
+            background-color: #9c27b0; /* Purple */
+        }
+
+        .dbms {
+            background-color: #d30e67; /* Red */
         }
     </style>
 </head>
@@ -131,60 +147,66 @@
     <a  href="index.html">Home</a>
 </div>
 
-<h1><img src="LOGO.jpg" alt=" logo" width="50px" height="40px" ></h1>
+<h1><img src="LOGO.jpg" alt="logo" width="50px" height="40px"></h1>
 
 <div class="container">
-    <div class="card">
+    <div class="card os">
+        <img src="./assets/OS.jpg" alt="Operating System">
         <div class="content">
             <h2>OPERATING SYSTEM</h2>
             <p>Understanding the backbone of computer systems.</p>
         </div>
-        <a class="sticker" id="OPERATING_SYSTEM" href="OS_level.html">OS</a>
+        <a class="sticker" id="OPERATING_SYSTEM" href="OS_level.html">Attempt Quiz</a>
     </div>
 
-    <div class="card">
+    <div class="card mp">
+        <img src="./assets/microprocessor.jpeg"" alt="Microprocessor">
         <div class="content">
             <h2>MICROPROCESSOR</h2>
             <p>Mastering principles of microprocessors.</p>
         </div>
-        <a class="sticker" id="MICROPROCESSOR" href="MP_level.html">MP</a>
+        <a class="sticker" id="MICROPROCESSOR" href="MP_level.html">Attempt Quiz</a>
     </div>
 
-    <div class="card">
+    <div class="card python">
+        <img src="./assets/python.jpeg" alt="Python">
         <div class="content">
             <h2>PYTHON</h2>
             <p>Harnessing the power of versatile programming.</p>
         </div>
-        <a class="sticker" id="PYTHON" href="py_level.html">PHY</a>
+        <a class="sticker" id="PYTHON" href="py_level.html">Attempt Quiz</a>
     </div>
 
-    <div class="card">
+    <div class="card aoa">
+        <img src="./assets/AOA.png" alt="Algorithm Analysis">
         <div class="content">
             <h2>AOA</h2>
             <p>Exploring the art of algorithm analysis.</p>
         </div>
-        <a class="sticker" id="AOA" href="AOA_level.html">AOA</a>
+        <a class="sticker" id="AOA" href="AOA_level.html">Attempt Quiz</a>
     </div>
 
-    <div class="card">
+    <div class="card dbms">
+        <img src="./assets/DBMS.jpeg" alt="Database Management">
         <div class="content">
             <h2>DBMS</h2>
             <p>Navigating the world of database management.</p>
-        </div>
-        <a class="sticker" id="DBMS" href="DBMS_level.html">DBMS</a>
+        </div> 
+        <a class="sticker" id="DBMS" href="DBMS_level.html">Attempt Quiz</a>
     </div>
 </div>
 
 <div class="details">
     <h2>Rules to Attempt the Quiz</h2>
-    <div id="rules" font="20px">
-        <p>
-            1.There are 10 questions in each quiz <br><br>
-            2.Only 1 question will be displayed at a time <br><br>
-            3.Attempt the question to move to next question <br><br>
-            4.One point per each coorect answer <br><br>
-            5.Score Maximum by giving correct answers.
-        </p>
+    <div id="rules">
+        <p>1. There are 10 questions in each quiz.</p>
+        <p>2.
+ Only 1 question will be displayed at a time.</p>
+        <p>3. Attempt the question to move to the next question.</p>
+        <p>4. One point per each correct answer.</p>
+        <p>5. Score maximum by giving correct answers.</p>
     </div>
+</div>
+
 </body>
 </html>
