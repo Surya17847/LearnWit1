@@ -162,7 +162,7 @@ const questions=[
       <div class="result">
         <h3>Your score is ${marksObtained}/${totalQuestions}</h3>
         <button class="reload-button" onclick="location.reload()">Play Again</button>
-        <a href="index.html" id="home"><button id="home-btn">HOME</button></a>
+        <a href="subject.html" id="home"><button id="home-btn">HOME</button></a>
         <a href="review.html" id="review"><button id="review-btn">REVIEW</button></a>
         <canvas id="pieChart" width="250" height="250"></canvas>
       

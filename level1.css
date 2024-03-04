@@ -73,7 +73,7 @@ li {
 
 #submit,
 #next,
-#previous {
+#prev {
     padding: 10px 20px;
     font-size: 18px;
     background-color: #333;
@@ -87,7 +87,7 @@ li {
 /* Change button color on hover */
 #submit:hover,
 #next:hover,
-#previous:hover {
+#prev:hover {
     background-color: #555;
 }
 
