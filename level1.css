@@ -111,3 +111,8 @@ li {
 .quize-section {
     animation: fadeIn 0.5s ease;
 }
+body {
+    background-image: url('./assets/background.jpg'); /* Replace 'background.jpg' with the path to your image */
+    background-size: cover; /* This will make sure the background image covers the entire viewport */
+    background-repeat: no-repeat; /* This prevents the background image from repeating */
+}
