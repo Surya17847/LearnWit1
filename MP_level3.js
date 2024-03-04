@@ -74,7 +74,7 @@ const questions=[{
     answer: 2,
     }
 ];
-  
+ 
 const quiz = document.querySelector("#quiz");
 const ansElement = document.querySelectorAll(".answer");
 const [queElement, option1, option2, option3] = document.querySelectorAll("#question", ".option1", "option2", ".option3");
@@ -145,10 +145,50 @@ const incorrectPercentage = ((incorrectAnswers / totalQuestions) * 100).toFixed(
 
 quiz.innerHTML = `
   <link rel="stylesheet" type="text/css" href="styles.css"></link>
+  <link rel="stylesheet" type="text/css" href="SCORE.css"></link>
+  <style>
+  .quizz{
+    padding:110px;
+    padding-top:200px;
+  }
+    .result {
+      background-color: #f2f2f2;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 20px;
+      text-align: center;
+    }
+    .result h3 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .result button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .result button:hover {
+      background-color: #3e8e41;
+    }
+    #home-btn, #review-btn {
+      margin-top: 20px;
+      margin-right: 10px;
+    }
+  </style>
   <div class="result">
     <h3>Your score is ${marksObtained}/${totalQuestions}</h3>
     <button class="reload-button" onclick="location.reload()">Play Again</button>
     <a href="index.html" id="home"><button id="home-btn">HOME</button></a>
+    <a href="review.html" id="review"><button id="review-btn">REVIEW</button></a>
     <canvas id="pieChart" width="250" height="250"></canvas>
   
   </div>
@@ -178,6 +218,9 @@ new Chart(ctx, {
     }
   }
 });
+// const reviewBtn = document.querySelector("#review-btn");
+// reviewBtn.addEventListener("click", displayReview);
+};
 
 const displayNextButton = () => {
 if (curQuestion === questions.length - 1) {
@@ -225,4 +268,4 @@ displayNextButton();
 
 // Start the quiz when the page loads
 startQuiz();
-}
+

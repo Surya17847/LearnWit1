@@ -57,14 +57,19 @@ let score = 0;
 let timer;
 let timerElement = document.getElementById("timer");
 let totalSeconds = 120; // Set total quiz time in seconds
-
 const displayQuestion = () => {
-  const { question, options } = questions[curQuestion];
+  const { question, options, answer } = questions[curQuestion];
   queElement.innerText = `${curQuestion + 1}: ${question}`;
   option1.innerText = options[0];
   option2.innerText = options[1];
   option3.innerText = options[2];
   option4.innerText = options[3];
+
+  // Check if user has already answered this question
+  const selectedOptionIndex = getSelectedOption();
+  if (selectedOptionIndex !== undefined) {
+    ansElement[selectedOptionIndex].checked = true;
+  }
 };
 
 const startTimer = () => {
@@ -107,6 +112,20 @@ const displayNextButton = () => {
     nextBtn.style.display = "block";
   }
 };
+prevBtn.addEventListener("click", () => {
+  stopTimer();
+  if (curQuestion > 0) {
+    const selectedOptionIndex = getSelectedOption();
+    if (selectedOptionIndex !== undefined) {
+      // Update user's answer for the current question
+      questions[curQuestion].userAnswer = selectedOptionIndex;
+    }
+    curQuestion--;
+    displayQuestion();
+    displayNextButton();
+    startTimer();
+  }
+});
 
 nextBtn.addEventListener("click", () => {
   stopTimer();
@@ -134,6 +153,7 @@ submitBtn.addEventListener("click", () => {
   displayResult();
 });
 
+
 const displayResult = () => {
   quiz.innerHTML = `
     <link rel="stylesheet" type="text/css" href="SCORE.css"></link>
@@ -151,7 +171,7 @@ const displayResult = () => {
 
 const startQuiz = () => {
   displayQuestion();
-  displayNextButton();
+  displayNextButton();n
   startTimer();
 };
 

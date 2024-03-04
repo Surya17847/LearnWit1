@@ -35,34 +35,32 @@ h1 {
     transition: transform 0.3s ease; /* Transition effect on hover */
 }
 .container:hover {
-    transform: scale(1.01); /* Scale the container on hover */
-    background-color: antiquewhite;
+    transform: scale(1.05); /* Scale the container on hover */
+    background-color: rgb(14, 34, 162);
+    transition: transform 0.3s ease;
 }
 .level-btn {
     padding: 15px 30px;
     font-size: 20px;
     background-color: #0a0a42; /* Darker blue */
-    color: #fff;
+    color: #1d0505;
     border: none;
-    border-radius: 5px;
+    border-radius: 3rem;
     margin: 0 10px;
     text-decoration: none;
     transition: background-color 0.3s ease;
 }
-
 .level-btn:hover {
     background-color: #0ea6a9; /* Even darker blue on hover */
     transform: scale(1.05);
+    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.2), 0 0 0 2px #edeff3; /* White box shadow */
 }
-
 .easy {
     background-color: #4cd137; /* Green for easy level */
 }
-
 .medium {
     background-color: #fbc531; /* Yellow for medium level */
 }
-
 .hard {
     background-color: #e84118; /* Red for hard level */
 }
