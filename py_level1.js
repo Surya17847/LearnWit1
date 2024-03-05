@@ -36,6 +36,7 @@ const questions=[
   },
 ]
 ;
+const prevBtn = document.querySelector("#prev");
 
 const quiz = document.querySelector("#quiz");
 const ansElement = document.querySelectorAll(".answer");
@@ -50,11 +51,17 @@ let score = 0;
 let timer; // Declare timer variable
 let timings = [];
 
+const displayPrevButton = () => {
+  prevBtn.style.display = curQuestion === 0 ? "none" : "block";
+};
+
 const displayQuestion = () => {
 startTimer();
 const { question, options } = questions[curQuestion];
 queElement.innerText = `${curQuestion + 1}: ${question}`;
 options.forEach((curOption, index) => (window[`option${index + 1}`].innerText = curOption));
+prevBtn.style.display = curQuestion === 0 ? "none" : "block";
+
 
 // startTimer(); // Start the timer when displaying a new question
 };
@@ -160,6 +167,7 @@ quiz.innerHTML = `
 // reviewBtn.addEventListener("click", displayReview);
 
 // Generate the pie chart
+
 const pieChartCanvas = document.getElementById("pieChart");
 const ctx = pieChartCanvas.getContext("2d");
 new Chart(ctx, {
@@ -183,6 +191,41 @@ new Chart(ctx, {
 // const reviewBtn = document.querySelector("#review-btn");
 // reviewBtn.addEventListener("click", displayReview);
 };
+
+// Function to display the previous selected answer
+const displayPreviousAnswer = () => {
+  const selectedOption = selectedOptions[curQuestion];
+  if (selectedOption !== undefined) {
+      ansElement[selectedOption].checked = true;
+  } else {
+      // If no previous selection, clear all selections
+      ansElement.forEach(option => option.checked = false);
+  }
+};
+
+// Other functions remain the same
+
+nextBtn.addEventListener("click", () => {
+  stopTimer();
+  const selectedOptionIndex = getSelectedOption();
+  if (selectedOptionIndex !== undefined) {
+      selectedOptions[curQuestion] = selectedOptionIndex; // Store the selected option
+  }
+  // Rest of the code
+});
+
+prevBtn.addEventListener("click", () => {
+  stopTimer();
+  curQuestion--;
+  if (curQuestion >= 0) {
+      displayQuestion();
+      displayNextButton();
+      startTimerFromStoredTime();
+      displayPreviousAnswer(); // Display the previous selected answer
+      prevBtn.style.display = curQuestion === 0 ? "none" : "block";
+  }
+});
+
 
 const displayNextButton = () => {
 if (curQuestion === questions.length - 1) {
