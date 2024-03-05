@@ -20,12 +20,14 @@ h1 {
     margin-bottom: 50px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-align: center;
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 150px;
     gap: 20px;
     flex-direction: column;
     border: 5px solid #053564; /* Dodger Blue */
