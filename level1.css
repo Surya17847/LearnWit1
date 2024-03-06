@@ -285,3 +285,22 @@ body {
         margin-top: 40px; /* Default margin */
     }
 }
+
+.exit{
+  
+    position: absolute;
+    top: 10px;
+   right: 10px;
+    border-radius: 0.5rem;
+    border: #000;
+    color: #e2edee;
+    background-color: #9d0787;
+  display: block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
