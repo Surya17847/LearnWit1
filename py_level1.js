@@ -265,18 +265,16 @@ prevBtn.addEventListener("click", () => {
       prevBtn.style.display = curQuestion === 0 ? "none" : "block";
   }
 });
-if (!exitBtn) {
-  const exitBtn = document.querySelector(".exit");
+const exitBtn = document.querySelector(".exit");
 
-  exitBtn.addEventListener("click", () => {
-      // Prompt a confirmation dialog before exiting
-      const confirmExit = confirm("Are you sure you want to exit?");
-      if (confirmExit) {
-          // Reload the window to exit the quiz
-          window.location.href="subject.html";
-      }
-  });
-}
+exitBtn.addEventListener("click", () => {
+    // Prompt a confirmation dialog before exiting
+    const confirmExit = confirm("Are you sure you want to exit?");
+    if (confirmExit) {
+        // Reload the window to exit the quiz
+        window.location.href="subject.html";
+    }
+});
 
 
 const displayNextButton = () => {
@@ -315,19 +313,6 @@ timings.push(timerElement.innerText);
 timerElement.style.display = "None"; 
 stopTimer(); // Stop the timer when submitting answer
 displayResult();
-});
-
-
-// Add event listener for the exit button
-const exitBtn = document.querySelector(".exit");
-
-exitBtn.addEventListener("click", () => {
-    // Prompt a confirmation dialog before exiting
-    const confirmExit = confirm("Are you sure you want to exit the quiz?");
-    if (confirmExit) {
-        // Reload the window to exit the quiz
-        window.location.href = "subject.html";
-    }
 });
 
 const startQuiz = () => {
