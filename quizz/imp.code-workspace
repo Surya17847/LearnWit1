@@ -1,0 +1,22 @@
+{
+  "folders": [
+	{
+		"name": "v1.0",
+		"path": "../../../../../../../Windows/System32/WindowsPowerShell/v1.0"
+	},
+	{
+		"name": "CodeCommandoes_WEb2.0_Syurs24",
+		"path": "../../../CodeCommandoes_WEb2.0_Syurs24"
+	},
+	{
+		"name": "New folder",
+		"path": "../../../places[1]/New folder"
+	},
+	{
+		"path": ".."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "LearnWit1"
+  }
+}

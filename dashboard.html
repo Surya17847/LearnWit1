@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<style>
+  body {
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    background-color: #333;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    background-color: #555;
+  }
+  
+  .dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    margin-top: 20px;
+  }
+  
+  .chart {
+    width: 300px;
+    height: 300px;
+    background-color: #444;
+    border-radius: 50%;
+    animation: rotate 2s infinite linear;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+  }
+  
+  .bar {
+    width: 100px;
+    height: 200px;
+    background-color: #666;
+    margin: 0 10px;
+    animation: grow 2s infinite;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes grow {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 200px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="navbar">
+  <a href="#">Home</a>
+  <a href="#">Quiz</a>
+</div>
+
+<div class="dashboard">
+  <div class="chart"></div>
+  <div class="bar"></div>
+  <div class="chart"></div>
+</div>
+
+<!-- <script src="AOA_level2.js"></script> -->
+<script>
+  const charts = document.querySelectorAll('.chart, .bar');
+
+  charts.forEach(chart => {
+    chart.addEventListener('mouseenter', () => {
+      chart.style.backgroundColor = '#555';
+    });
+
+    chart.addEventListener('mouseleave', () => {
+      chart.style.backgroundColor = chart.classList.contains('chart') ? '#444' : '#666';
+    });
+  });
+
+  const score = localStorage.getItem('finalScore');
+  const chartElements = document.querySelectorAll('.chart');
+  const barElement = document.querySelector('.bar');
+
+  chartElements.forEach((chart, index) => {
+    chart.style.backgroundColor = getRandomColor();
+    chart.innerHTML = `<span style="font-size: 24px">${score}</span>`;
+  });
+
+  barElement.style.backgroundColor = getRandomColor();
+  barElement.innerHTML = `<span style="font-size: 24px">${score}</span>`;
+
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  
+  const pieChartElement = document.querySelector('.chart');
+  const pieChartScore = parseInt(final_score);
+
+  const pieChartOptions = {
+    series: [pieChartScore, 100 - pieChartScore],
+    chart: {
+      type: 'pie',
+      width: 300,
+      height: 300,
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 800,
+        animateGradually: {
+          enabled: true,
+          delay: 150
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 350
+        }
+      }
+    },
+    labels: ['Score', 'Remaining'],
+    colors: ['#FF4560', '#775DD0'],
+    legend: {
+      show: true,
+      position: 'bottom',
+      horizontalAlign: 'center',
+      fontSize: '14px',
+      markers: {
+        width: 12,
+        height: 12,
+        strokeWidth: 0
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    responsive: [{
+      breakpoint: 480,
+      options: {
+        chart: {
+          width: 200
+        },
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }]
+  };
+
+  const pieChart = new ApexCharts(pieChartElement, pieChartOptions);
+  pieChart.render();
+</script>
+</body>
+</html>
