@@ -41,7 +41,14 @@ header img {
     max-width: 600px;
     padding: 20px;
     text-align: center;
-    margin: 20px auto; /* Center the content horizontally */
+    margin: auto; /* Center the content horizontally and vertically */
+    position: absolute;
+    /* top: 50%;*/
+    left: 100px; 
+    /* transform: translate(-50%, -50%); */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 /* Quiz content styles */
@@ -123,7 +130,11 @@ li {
     margin: 20px auto;
     position: relative; /* Required for absolute positioning of buttons */
     border: 2px solid #ccc; /* Add border to quiz section */
-}
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
 
 /* Options styles */
 ul {
@@ -223,9 +234,12 @@ body {
     }
 
     .quiz-section {
-        width: 90%; /* Adjust width of quiz section */
+        width: 100%; /* Adjust width of quiz section */
         padding: 10px; /* Adjust padding */
         margin: 10px auto; /* Center quiz section */
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 
     .question {
@@ -246,7 +260,10 @@ body {
     }
 
     #pieChartContainer {
-        margin-top: 20px; /* Adjust margin */
+            margin-top: 20px; 
+            align-content: center;
+            justify-items: center;
+            flex-direction: column;
     }
 }
 
@@ -282,6 +299,31 @@ body {
     }
 
     #pieChartContainer {
-        margin-top: 40px; /* Default margin */
+        margin-top: 40px; 
+        align-content: center;
+        justify-items: center;
+        flex-direction: column;
     }
 }
+  .exit {
+    position: absolute;
+    top: 20px;
+    right: 150px;
+    border-radius: 0.5rem;
+    border: #000;
+    color: #e2edee;
+    background-color: #9d0787;
+    display: block;
+    padding: 1rem 2rem; /* Increase the size of the button */
+    font-size: 1.2rem; /* Increase the font size of the button */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for the exit button */
+.exit:hover {
+    background-color: #6a045e;
+}
+  

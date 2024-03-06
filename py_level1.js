@@ -14,6 +14,7 @@ const questions=[
     options: ["A type of snake", "A programming language", "A data structure", "A software application"],
     answer: 1,
   },
+  
   {
     question: "How do you write a comment in Python?",
     options: ["//This is a comment", "/*This is a comment*/", "#This is a comment", "'This is a comment'"],
@@ -30,10 +31,49 @@ const questions=[
     answer: 2,
   },
   {
-    question: "Which data type is used to store a sequence of characters in Python?",
-    options: ["int", "float", "str", "list"],
-    answer: 2,
+    "question": "What is the purpose of using a 'lambda' function in Python?",
+    "options": [
+      "To define a function that can accept any number of arguments",
+      "To create an anonymous function without a name",
+      "To declare a function that can only be called once",
+      "To specify a function with a variable number of arguments"
+    ],
+    "answer": 1
   },
+    {
+      "question": "What is the purpose of a Python decorator?",
+      "options": [
+        "To define a reusable piece of code that can be applied to multiple functions",
+        "To dynamically change the behavior of a function or method",
+        "To encapsulate code within a class definition",
+        "To optimize the execution speed of Python code"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the output of the following Python code?",
+      "code": "def add(a, b):\n    return a + b\n\nprint(add(3, '2'))",
+      "options": [
+        "'32'",
+        "5",
+        "'5'",
+        "TypeError: unsupported operand type(s) for +: 'int' and 'str'"
+      ],
+      "answer": 0
+    },
+    
+    {
+      "question": "What will be the output of the following Python code snippet?",
+      "code": "class Parent:\n    def __init__(self):\n        self.value = 4\n    \n    def add_value(self, value):\n        self.value += value\n\nclass Child(Parent):\n    def __init__(self):\n        super().__init__()\n    \n    def add_value(self, value):\n        super().add_value(value)\n        self.value *= value\n\nobj = Child()\nobj.add_value(3)\nprint(obj.value)",
+      "options": [
+        "12",
+        "16",
+        "24",
+        "Error: Method 'add_value' cannot be called on object 'Child'"
+      ],
+      "answer": 1
+    }
+
 ]
 ;
 const prevBtn = document.querySelector("#prev");
@@ -224,6 +264,16 @@ prevBtn.addEventListener("click", () => {
       displayPreviousAnswer(); // Display the previous selected answer
       prevBtn.style.display = curQuestion === 0 ? "none" : "block";
   }
+});
+const exitBtn = document.querySelector(".exit");
+
+exitBtn.addEventListener("click", () => {
+    // Prompt a confirmation dialog before exiting
+    const confirmExit = confirm("Are you sure you want to exit?");
+    if (confirmExit) {
+        // Reload the window to exit the quiz
+        window.location.href="subject.html";
+    }
 });
 
 
