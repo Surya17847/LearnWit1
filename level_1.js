@@ -121,93 +121,6 @@ ansElement.forEach((curElem) => (curElem.checked = false));
 };
 
 
-const displayResult = () => {
-const totalQuestions = questions.length;
-const marksObtained = score;
-const incorrectAnswers = totalQuestions - marksObtained;
-const correctPercentage = ((marksObtained / totalQuestions) * 100).toFixed(2);
-const incorrectPercentage = ((incorrectAnswers / totalQuestions) * 100).toFixed(2);
-
-quiz.innerHTML = `
-  <link rel="stylesheet" type="text/css" href="styles.css"></link>
-  <link rel="stylesheet" type="text/css" href="SCORE.css"></link>
-  <style>
-  .quizz{
-    padding:110px;
-    padding-top:200px;
-  }
-    .result {
-      background-color: #f2f2f2;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 20px;
-      text-align: center;
-    }
-    .result h3 {
-      color: #333;
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-    .result button {
-      background-color: #4CAF50;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .result button:hover {
-      background-color: #3e8e41;
-    }
-    #home-btn, #review-btn {
-      margin-top: 20px;
-      margin-right: 10px;
-    }
-  </style>
-  <div class="result">
-    <h3>Your score is ${marksObtained}/${totalQuestions}</h3>
-    <button class="reload-button" onclick="location.reload()">Play Again</button>
-    <a href="subject.html" id="home"><button id="home-btn">HOME</button></a>
-    <a href="review.html" id="review"><button id="review-btn">REVIEW</button></a>
-    <canvas id="pieChart" width="250" height="250"></canvas>
-  
-  </div>
-`;
-
-// const reviewBtn = document.querySelector("#review-btn");
-// reviewBtn.addEventListener("click", displayReview);
-
-// Generate the pie chart
-
-const pieChartCanvas = document.getElementById("pieChart");
-const ctx = pieChartCanvas.getContext("2d");
-new Chart(ctx, {
-  type: "pie",
-  data: {
-    labels: ["Correct", "Incorrect"],
-    datasets: [{
-      label: "Quiz Result",
-      data: [marksObtained, incorrectAnswers],
-      backgroundColor: ["green", "red"]
-    }]
-  },
-  options: {
-    responsive: false,
-    title: {
-      display: true,
-      text: "Quiz Result"
-    }
-  }
-});
-// const reviewBtn = document.querySelector("#review-btn");
-// reviewBtn.addEventListener("click", displayReview);
-};
-
 // Function to display the previous selected answer
 const displayPreviousAnswer = () => {
 
@@ -222,16 +135,10 @@ const displayPreviousAnswer = () => {
 
 // Other functions remain the same
 
-nextBtn.addEventListener("click", () => {
-  stopTimer();
-  const selectedOptionIndex = getSelectedOption();
-  if (selectedOptionIndex !== undefined) {
-      selectedOptions[curQuestion] = selectedOptionIndex; // Store the selected option
-  }
-  // Rest of the code
-});
+
 
 prevBtn.addEventListener("click", () => {
+  score--;
   stopTimer();
   curQuestion--;
   if (curQuestion >= 0) {
@@ -310,3 +217,91 @@ displayNextButton();
 
 // Start the quiz when the page loads
 startQuiz();
+
+const displayResult = () => {
+  const totalQuestions = questions.length;
+  const marksObtained = score;
+  const incorrectAnswers = totalQuestions - marksObtained;
+  const correctPercentage = ((marksObtained / totalQuestions) * 100).toFixed(2);
+  const incorrectPercentage = ((incorrectAnswers / totalQuestions) * 100).toFixed(2);
+  
+  quiz.innerHTML = `
+    <link rel="stylesheet" type="text/css" href="styles.css"></link>
+    <link rel="stylesheet" type="text/css" href="SCORE.css"></link>
+    <style>
+    .quizz{
+      padding:110px;
+      padding-top:200px;
+    }
+      .result {
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+      }
+      .result h3 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      .result button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .result button:hover {
+        background-color: #3e8e41;
+      }
+      #home-btn, #review-btn {
+        margin-top: 20px;
+        margin-right: 10px;
+      }
+    </style>
+    <div class="result">
+      <h3>Your score is ${marksObtained}/${totalQuestions}</h3>
+      <button class="reload-button" onclick="location.reload()">Play Again</button>
+      <a href="subject.html" id="home"><button id="home-btn">HOME</button></a>
+      <a href="review.html" id="review"><button id="review-btn">REVIEW</button></a>
+      <canvas id="pieChart" width="250" height="250"></canvas>
+    
+    </div>
+  `;
+  
+  // const reviewBtn = document.querySelector("#review-btn");
+  // reviewBtn.addEventListener("click", displayReview);
+  
+  // Generate the pie chart
+  
+  const pieChartCanvas = document.getElementById("pieChart");
+  const ctx = pieChartCanvas.getContext("2d");
+  new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: ["Correct", "Incorrect"],
+      datasets: [{
+        label: "Quiz Result",
+        data: [marksObtained, incorrectAnswers],
+        backgroundColor: ["green", "red"]
+      }]
+    },
+    options: {
+      responsive: false,
+      title: {
+        display: true,
+        text: "Quiz Result"
+      }
+    }
+  });
+  // const reviewBtn = document.querySelector("#review-btn");
+  // reviewBtn.addEventListener("click", displayReview);
+  };
+  
