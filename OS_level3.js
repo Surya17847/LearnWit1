@@ -1,10 +1,5 @@
 const questions=[
   {
-    question: "In Python, what keyword is used to define a function?",
-    options: ["func", "define", "def", "function"],
-    answer: 2,
-  },
-  {
     question: "What is the primary purpose of an operating system?",
     options: ["Managing hardware resources", "Running applications", "Both a and b", "None of the above"],
     answer: 2,
@@ -12,11 +7,6 @@ const questions=[
   {
     question: "Which scheduling algorithm is based on priority?",
     options: ["Round Robin", "First-Come-First-Serve", "Priority Scheduling", "Shortest Job Next"],
-    answer: 2,
-  },
-  {
-    question: "What is a file system?",
-    options: ["Software that manages files on a computer", "The physical organization of data on a storage device", "Both a and b", "Neither a nor b"],
     answer: 2,
   },
   {

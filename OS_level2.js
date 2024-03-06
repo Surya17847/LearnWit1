@@ -1,7 +1,7 @@
 const questions=[
   {
-    question: "In Python, what keyword is used to define a function?",
-    options: ["func", "define", "def", "function"],
+    question: "What is a file system?",
+    options: ["Software that manages files on a computer", "The physical organization of data on a storage device", "Both a and b", "Neither a nor b"],
     answer: 2,
   },
   {
@@ -39,8 +39,17 @@ const questions=[
     options: ["To synchronize processes", "To manage file permissions", "To allocate memory", "To control CPU scheduling"],
     answer: 0,
   },
+  {
+    question: "The address of the next instruction to be executed by the current process is provided by the _________",
+    options: ["CPU registers","Program counter","Process stack","Pipe"],
+    answer: 1,
+  },
+  {
+    question: " A Process Control Block(PCB) does not contain which of the following :",
+    options: ["Code","Stack", "Bootstrap program","Data "],
+    answer: 2,
+  },
 ]
-
 ;
 
 const quiz = document.querySelector("#quiz");

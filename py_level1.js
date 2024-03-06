@@ -5,6 +5,11 @@ const questions=[
     answer: 1,
   },
   {
+    question: " What is the output of the following segment  chr(ord('A'))",
+    options: ["A","B","a","Error"],
+    answer: 0,
+  },
+  {
     question: "What is Python primarily known for?",
     options: ["Web development", "Data science and machine learning", "Game development", "All of the above"],
     answer: 3,
@@ -14,7 +19,11 @@ const questions=[
     options: ["A type of snake", "A programming language", "A data structure", "A software application"],
     answer: 1,
   },
-  
+  {
+    question: " _____ is used to create an object",
+    options: ["Class","constructor","User-defined functions","in-built function"],
+    answer: 1,
+  },
   {
     question: "How do you write a comment in Python?",
     options: ["//This is a comment", "/*This is a comment*/", "#This is a comment", "'This is a comment'"],
@@ -30,16 +39,6 @@ const questions=[
     options: ["function multiply(a, b):", "def multiply(a, b):", "define multiply(a, b):", "func multiply(a, b):"],
     answer: 2,
   },
-  {
-    "question": "What is the purpose of using a 'lambda' function in Python?",
-    "options": [
-      "To define a function that can accept any number of arguments",
-      "To create an anonymous function without a name",
-      "To declare a function that can only be called once",
-      "To specify a function with a variable number of arguments"
-    ],
-    "answer": 1
-  },
     {
       "question": "What is the purpose of a Python decorator?",
       "options": [
@@ -50,18 +49,6 @@ const questions=[
       ],
       "answer": 1
     },
-    {
-      "question": "What is the output of the following Python code?",
-      "code": "def add(a, b):\n    return a + b\n\nprint(add(3, '2'))",
-      "options": [
-        "'32'",
-        "5",
-        "'5'",
-        "TypeError: unsupported operand type(s) for +: 'int' and 'str'"
-      ],
-      "answer": 0
-    },
-    
     {
       "question": "What will be the output of the following Python code snippet?",
       "code": "class Parent:\n    def __init__(self):\n        self.value = 4\n    \n    def add_value(self, value):\n        self.value += value\n\nclass Child(Parent):\n    def __init__(self):\n        super().__init__()\n    \n    def add_value(self, value):\n        super().add_value(value)\n        self.value *= value\n\nobj = Child()\nobj.add_value(3)\nprint(obj.value)",

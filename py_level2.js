@@ -1,13 +1,43 @@
 const questions=[
   {
+    question: "What is the output of the following program  \ny = 8\nz = lambda x : x * y\nprint (z(6)) ",
+    options: ["48","14","64","NONE"],
+    answer: 0,
+  },
+  {
+    question: "What is the purpose of using a 'lambda' function in Python?",
+    options: [
+      "To define a function that can accept any number of arguments",
+      "To create an anonymous function without a name",
+      "To declare a function that can only be called once",
+      "To specify a function with a variable number of arguments"
+    ],
+    answer: 1
+  },
+  {
     question: "In Python, what keyword is used to define a function?",
     options: ["func", "define", "def", "function"],
     answer: 2,
   },
   {
+    question: " In Regex, [a-n] stands for?",
+    options: ["Returns a match for any digit between 0 and 9","Returns a match for any lower case character, alphabetically between a and n","Returns a match for any two-digit numbers from 00 and 59","Returns a match for any character EXCEPT a, r, and n"],
+    answer: 1,
+  },
+  {
     question: "What is the purpose of the \"if\" statement in Python?",
     options: ["To create a loop", "To define a function", "To make a decision", "To perform arithmetic operations"],
     answer: 2,
+  },
+  {
+    question: "What is the output of the following Python code?\ndef add(a, b):\n    return a + b\n\nprint(add(3, '2'))",
+    options: [
+      "'32'",
+      "5",
+      "'5'",
+      "TypeError: unsupported operand type(s) for +: 'int' and 'str'"
+    ],
+    answer: 0
   },
   {
     question: "How do you declare a variable in Python?",

@@ -20,6 +20,11 @@ const questions = [
       answer: 2,
   },
   {
+    question:"What does 'ASCII' stand for in character encoding?",
+    options:["American Standard Code for Information Interchange","Advanced Standard Character Input Interface","Automated Symbol Code for Interactive Information Exchange","Automated Standard Code for Internet Interaction"],
+    answer:0,
+  },
+  {
       question: "What does the 'HTTP' in 'HTTP Request' stand for?",
       options: ["HyperText Transfer Protocol", "High-Level Text Processing", "Hyperlink Text Transfer Protocol", "High-Level Transfer Process"],
       answer: 0,

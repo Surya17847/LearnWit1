@@ -10,11 +10,6 @@ const questions=[
     answer: 2,
   },
   {
-    question: "What is a file system?",
-    options: ["Software that manages files on a computer", "The physical organization of data on a storage device", "Both a and b", "Neither a nor b"],
-    answer: 2,
-  },
-  {
     question: "Which component of the operating system is responsible for managing memory?",
     options: ["CPU", "RAM", "Hard Disk", "ALU"],
     answer: 1,
