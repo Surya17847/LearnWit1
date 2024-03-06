@@ -56,7 +56,6 @@ const questions=[
  const nextBtn = document.querySelector("#next");
  const submitBtn = document.querySelector("#submit");
  // const reviewBtn = document.querySelector("#review");
- const timerElement = document.querySelector("#timer");
  
  let curQuestion = 0;
  let score = 0;
@@ -67,8 +66,10 @@ const questions=[
    startTimer();
    const { question, options } = questions[curQuestion];
    queElement.innerText = `${curQuestion + 1}: ${question}`;
-   options.forEach((curOption, index) => (window[`option${index + 1}`].innerText = curOption));
- 
+   option1.innerText = options[0];
+   option2.innerText = options[1];
+   option3.innerText = options[2];
+   option4.innerText = options[3];
    // startTimer(); // Start the timer when displaying a new question
  };
  
