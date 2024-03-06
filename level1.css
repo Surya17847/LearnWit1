@@ -168,17 +168,22 @@ li {
 /* Previous button styles */
 #prev {
     position: absolute;
-    bottom: -40px; /* Position below quiz div */
+    bottom: 10px; /* Position below quiz div */
     left: 50px; /* Adjust as needed */
 }
 
 /* Next button styles */
 #next {
     position: absolute;
-    bottom: -40px; /* Position below quiz div */
+    bottom: 10px; /* Position below quiz div */
     right: 50px; /* Adjust as needed */
 }
-
+/* submit button styles */
+#submit {
+    position: absolute;
+    bottom: 10px; /* Position below quiz div */
+    right: 50px; /* Adjust as needed */
+}
 label {
         display: flex; /* Use flexbox for alignment */
         align-items: center; /* Align items vertically */
