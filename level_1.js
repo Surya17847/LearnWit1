@@ -210,7 +210,7 @@ exitBtn.addEventListener("click", () => {
     const confirmExit = confirm("Are you sure you want to exit the quiz?");
     if (confirmExit) {
         // Reload the window to exit the quiz
-        window.location.href = "subject.html";
+        window.location.href = "index.html";
     }
 });
 
@@ -275,7 +275,7 @@ const displayResult = () => {
       <h3>Your score is ${marksObtained}/${totalQuestions}</h3>
       <button class="reload-button" onclick="location.reload()">Play Again</button>
       <a href="subject.html" id="home"><button id="home-btn">HOME</button></a>
-      <a href="review.html" id="review"><button id="review-btn">REVIEW</button></a>
+      <!-- <a href="review.html" id="review"><button id="review-btn">REVIEW</button></a> -->
       <canvas id="pieChart" width="250" height="250"></canvas>
     
     </div>
