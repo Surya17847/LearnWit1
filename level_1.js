@@ -52,7 +52,7 @@ const questions = [
 ];
 
 const prevBtn = document.querySelector("#prev");
-var marks;
+let marks=0;
 const quiz = document.querySelector("#quiz");
 const ansElement = document.querySelectorAll(".answer");
 const [queElement, option1, option2, option3] = document.querySelectorAll("#question", ".option1", "option2", ".option3");
@@ -80,12 +80,21 @@ const displayQuestion = () => {
 startTimer();
 const { question, options } = questions[curQuestion];
 queElement.innerText = `${curQuestion + 1}: ${question}`;
-options.forEach((curOption, index) => (window[`option${index + 1}`].innerText = curOption));
+// options.forEach((curOption, index) => (window[`option${index + 1}`].innerText = curOption));
+options.forEach((curOption, index) => {
+  const optionElement = window[`option${index + 1}`];
+  optionElement.innerText = curOption;
+  
+});
 prevBtn.style.display = curQuestion === 0 ? "none" : "block";
 
 
 // startTimer(); // Start the timer when displaying a new question
 };
+
+
+
+
 
 const startTimer = () => {
 let seconds = 0;
@@ -114,12 +123,6 @@ ansElement.forEach((curOption, index) => {
 });
 return ansIndex;
 };
-// const getSelectedAnswer = (index) => {
-//   const selectedOptionIndex = getSelectedOption();
-//   return selectedOptionIndex !== undefined ? questions[index].options[selectedOptionIndex] : 'Not attempted';
-
-
-// };
 
 const deselectAnswers = () => {
 ansElement.forEach((curElem) => (curElem.checked = false));
@@ -166,6 +169,11 @@ if (curQuestion === questions.length - 1) {
 }
 };
 
+
+
+
+
+
 nextBtn.addEventListener("click", () => {
  
 stopTimer(); // Stop the timer when moving to the next question
@@ -177,21 +185,32 @@ if (selectedOptionIndex !== undefined) {
     selectedOptions[curQuestion] = selectedOptionIndex; // Store the selected option
 }
 
+
 if (selectedOptionIndex === questions[curQuestion].answer) {
   marks=1;
   score++;
+}
+else{
+  marks=0;
 }
 
 let useremail= localStorage.getItem("userEmail");
   updateUserActivity(useremail);
 curQuestion++;
 if (curQuestion < questions.length) {
-  deselectAnswers();
+  // deselectAnswers();
+  
+  
+  
   displayQuestion();
+displayPreviousAnswer(); // Display the previous selected answer
+
+  // deselectAnswers();
   displayNextButton(); // Display next button if it's not the last question
-} else {
-  displayResult();
-}
+} 
+// else {
+//   displayResult();
+// }
 
 });
 
@@ -217,20 +236,31 @@ const updateUserActivity = (userEmail) => {
 };
 
 
-
 submitBtn.addEventListener("click", () => {
- 
- timerElement.style.display = "None"; 
-  
- 
-
-stopTimer();
-if (selectedOptionIndex === questions[curQuestion].answer) {
-  score++;
+  stopTimer();
+  const selectedOptionIndex = getSelectedOption();
+  if (selectedOptionIndex !== undefined) {
+    selectedOptions[curQuestion] = selectedOptionIndex; // Store the selected option
 }
+  if (selectedOptionIndex === questions[curQuestion].answer) {
+    marks=1;
+    score++;
+    
+  }
+  else{
+    marks=0;
+  }
+  let useremail= localStorage.getItem("userEmail");
+  updateUserActivity(useremail);
+
+  
+
+timerElement.style.display = "None"; 
 displayResult();
 
-});
+}
+
+);
 
 
 // Add event listener for the exit button
