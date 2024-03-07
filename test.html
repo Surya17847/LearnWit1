@@ -216,6 +216,7 @@
       function signup() {
         const username = document.getElementById("signupUsername").value;
         const userEmail = document.getElementById("signupEmail").value;
+        localStorage.setItem("userEmail", userEmail);
         const userPassword = document.getElementById("signupPassword").value;
 
         const data = {

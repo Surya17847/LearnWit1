@@ -19,31 +19,31 @@ const questions = [
       options: ["func", "define", "def", "function"],
       answer: 2,
   },
-  {
-    question:"What does 'ASCII' stand for in character encoding?",
-    options:["American Standard Code for Information Interchange","Advanced Standard Character Input Interface","Automated Symbol Code for Interactive Information Exchange","Automated Standard Code for Internet Interaction"],
-    answer:0,
-  },
-  {
-      question: "What does the 'HTTP' in 'HTTP Request' stand for?",
-      options: ["HyperText Transfer Protocol", "High-Level Text Processing", "Hyperlink Text Transfer Protocol", "High-Level Transfer Process"],
-      answer: 0,
-  },
-  {
-      question: "What is the full form of 'JSON' in data interchange formats?",
-      options: ["JavaScript Object Notation", "Java Serialized Object Notation", "JavaScript Object Networking", "Java Syntax Object Name"],
-      answer: 0,
-  },
-  {
-      question: "In Java, what does 'JVM' stand for in the context of running Java applications?",
-      options: ["Java Virtual Machine", "Java Variable Manager", "JavaScript Virtual Module", "Java Visual Monitor"],
-      answer: 0,
-  },
-  {
-      question: "Which programming language is often used for creating dynamic and interactive web pages?",
-      options: ["Java", "JavaScript", "Python", "C++"],
-      answer: 1,
-  },
+  // {
+  //   question:"What does 'ASCII' stand for in character encoding?",
+  //   options:["American Standard Code for Information Interchange","Advanced Standard Character Input Interface","Automated Symbol Code for Interactive Information Exchange","Automated Standard Code for Internet Interaction"],
+  //   answer:0,
+  // },
+  // {
+  //     question: "What does the 'HTTP' in 'HTTP Request' stand for?",
+  //     options: ["HyperText Transfer Protocol", "High-Level Text Processing", "Hyperlink Text Transfer Protocol", "High-Level Transfer Process"],
+  //     answer: 0,
+  // },
+  // {
+  //     question: "What is the full form of 'JSON' in data interchange formats?",
+  //     options: ["JavaScript Object Notation", "Java Serialized Object Notation", "JavaScript Object Networking", "Java Syntax Object Name"],
+  //     answer: 0,
+  // },
+  // {
+  //     question: "In Java, what does 'JVM' stand for in the context of running Java applications?",
+  //     options: ["Java Virtual Machine", "Java Variable Manager", "JavaScript Virtual Module", "Java Visual Monitor"],
+  //     answer: 0,
+  // },
+  // {
+  //     question: "Which programming language is often used for creating dynamic and interactive web pages?",
+  //     options: ["Java", "JavaScript", "Python", "C++"],
+  //     answer: 1,
+  // },
   {
       question: "Which programming language is often used for developing Android apps?",
       options: ["Java", "Python", "C#", "Ruby"],
@@ -52,7 +52,7 @@ const questions = [
 ];
 
 const prevBtn = document.querySelector("#prev");
-
+var marks;
 const quiz = document.querySelector("#quiz");
 const ansElement = document.querySelectorAll(".answer");
 const [queElement, option1, option2, option3] = document.querySelectorAll("#question", ".option1", "option2", ".option3");
@@ -167,6 +167,7 @@ if (curQuestion === questions.length - 1) {
 };
 
 nextBtn.addEventListener("click", () => {
+ 
 stopTimer(); // Stop the timer when moving to the next question
 
 const selectedOptionIndex = getSelectedOption();
@@ -177,9 +178,12 @@ if (selectedOptionIndex !== undefined) {
 }
 
 if (selectedOptionIndex === questions[curQuestion].answer) {
+  marks=1;
   score++;
 }
 
+let useremail= localStorage.getItem("userEmail");
+  updateUserActivity(useremail);
 curQuestion++;
 if (curQuestion < questions.length) {
   deselectAnswers();
@@ -188,17 +192,44 @@ if (curQuestion < questions.length) {
 } else {
   displayResult();
 }
+
 });
 
+// Function to update user data in local storage
+const updateUserActivity = (userEmail) => {
+  const userData = JSON.parse(localStorage.getItem(userEmail)) || {}; // Retrieve existing user data or create a new object
+  const currentQuestion = questions[curQuestion];
+  const selectedOptionIndex = selectedOptions[curQuestion];
+  
+ 
+  
+
+  userData.questions = userData.questions || [];
+  userData.questions.push({
+    question: currentQuestion.question,
+    // selectedOption: selectedOptions[curQuestion],
+    selectedOption: currentQuestion.options[selectedOptions[curQuestion] ],
+    points :marks,
+    timer: timerElement.innerText
+  });
+  
+  localStorage.setItem(userEmail, JSON.stringify(userData)); // Store the updated user data in local storage
+};
+
+
+
 submitBtn.addEventListener("click", () => {
-const selectedOptionIndex = getSelectedOption();
+ 
+ timerElement.style.display = "None"; 
+  
+ 
+
+stopTimer();
 if (selectedOptionIndex === questions[curQuestion].answer) {
   score++;
 }
-
-timerElement.style.display = "None"; 
-stopTimer(); // Stop the timer when submitting answer
 displayResult();
+
 });
 
 
@@ -275,10 +306,18 @@ const displayResult = () => {
       <h3>Your score is ${marksObtained}/${totalQuestions}</h3>
       <button class="reload-button" onclick="location.reload()">Play Again</button>
       <a href="subject.html" id="home"><button id="home-btn">HOME</button></a>
-      <!-- <a href="review.html" id="review"><button id="review-btn">REVIEW</button></a> -->
+      <a href="review.html" id="review"><button id="review-btn">REVIEW</button></a>
       <canvas id="pieChart" width="250" height="250"></canvas>
     
     </div>
+    <script>
+    const reviewBtn = document.getElementById("#review-btn");
+reviewBtn.addEventListener("click", () => {
+    // stopTimer();
+    updateUserActivity();
+    displayUserActivity();
+});
+    </script>
   `;
   
   // const reviewBtn = document.querySelector("#review-btn");
@@ -309,4 +348,54 @@ const displayResult = () => {
   // const reviewBtn = document.querySelector("#review-btn");
   // reviewBtn.addEventListener("click", displayReview);
   };
+  // function signup() {
+  // const userEmail = document.getElementById("signupEmail").value;
+  // }
   
+
+
+
+
+
+
+
+
+
+
+
+// const updateUserActivity = (userEmail) => {
+//   const userData = JSON.parse(localStorage.getItem(userEmail)) || {};
+//   // const userData ={};
+
+//   userData.questions = questions.map((q, index) => ({
+//       question: q.question,
+//       correctAnswer: q.options[q.answer],
+//       selectedAnswer: ansElement[selectedOptions[index]] !== undefined ? q.options[selectedOptions[index]] : 'Not attempted'
+//   }));
+//   userData.marks = score;
+//   userData.timeSpent = formatTime(totalTime);
+//   localStorage.setItem(userEmail, JSON.stringify(userData));
+// };
+
+// const getUserActivity = (userEmail) => {
+//   return JSON.parse(localStorage.getItem(userEmail)) || {};
+// };
+
+// const displayUserActivity = (userEmail) => {
+//   const userData = getUserActivity();
+//   const reviewContainer = document.getElementById('review-container');
+//   reviewContainer.innerHTML = `
+//       <h2>Review Your Quiz</h2>
+//       
+//       <p>Total Time Spent: ${userData.timeSpent}</p>
+      // <ol>
+      //     ${userData.questions.map((q, index) => `
+      //         <li>
+      //             <p>${q.question}</p>
+      //             <p>Correct Answer: ${q.correctAnswer}</p>
+      //             <p>Your Answer: ${q.selectedAnswer}</p>
+      //         </li>
+      //     `).join('')}
+      // </ol>
+//   `;
+// };
