@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review</title>
     <link rel="icon" href="icon.ico" type="image/x-icon" />
-
     <link rel="stylesheet" href="review.css">
 </head>
 <body>
@@ -14,14 +13,17 @@
         <button id="logoutBtn" class="btn btn-outline-light"><a href="index.html">Logout</a></button>
     </nav>
     <div class="reviewpage">
-        <div id="review-container"></div>
-        <!-- <div class="button">
-            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-        </div> -->
-
+        <button id="analyze-btn" class="btn btn-primary">Analyze Your Result</button>
+        <div id="review-container" class="review-container">
+            <!-- Review content will be displayed here -->
+        </div>
+        <div id="graph-container" class="graph-container">
+            <!-- Graph will be displayed here -->
+        </div>
+        <div id="home-btn-container">
+            <button id="home-btn" class="btn btn-outline-light">Go to Home</button>
+        </div>
     </div>
-    <button id="review-btn">Review Quiz</button>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="review.js"></script>
     <script src="level_1.js"></script>
