@@ -146,7 +146,7 @@ const displayPreviousAnswer = () => {
 
 
 prevBtn.addEventListener("click", () => {
-  score--;
+  
   stopTimer();
   curQuestion--;
   if (curQuestion >= 0) {
@@ -219,6 +219,7 @@ const updateUserActivity = (userEmail) => {
   const userData = JSON.parse(localStorage.getItem(userEmail)) || {}; // Retrieve existing user data or create a new object
   const currentQuestion = questions[curQuestion];
   const selectedOptionIndex = selectedOptions[curQuestion];
+  const correctanswer=currentQuestion.options[questions[curQuestion].answer];
   
  
   
@@ -229,6 +230,7 @@ const updateUserActivity = (userEmail) => {
     // selectedOption: selectedOptions[curQuestion],
     selectedOption: currentQuestion.options[selectedOptions[curQuestion] ],
     points :marks,
+    answer:correctanswer,
     timer: timerElement.innerText
   });
   
@@ -336,18 +338,11 @@ const displayResult = () => {
       <h3>Your score is ${marksObtained}/${totalQuestions}</h3>
       <button class="reload-button" onclick="location.reload()">Play Again</button>
       <a href="subject.html" id="home"><button id="home-btn">HOME</button></a>
-      <a href="review.html" id="review"><button id="review-btn">REVIEW</button></a>
+      <a href="review.html" ><button>REVIEW</button></a>
       <canvas id="pieChart" width="250" height="250"></canvas>
     
     </div>
-    <script>
-    const reviewBtn = document.getElementById("#review-btn");
-reviewBtn.addEventListener("click", () => {
-    // stopTimer();
-    updateUserActivity();
-    displayUserActivity();
-});
-    </script>
+    
   `;
   
   // const reviewBtn = document.querySelector("#review-btn");
@@ -393,19 +388,6 @@ reviewBtn.addEventListener("click", () => {
 
 
 
-// const updateUserActivity = (userEmail) => {
-//   const userData = JSON.parse(localStorage.getItem(userEmail)) || {};
-//   // const userData ={};
-
-//   userData.questions = questions.map((q, index) => ({
-//       question: q.question,
-//       correctAnswer: q.options[q.answer],
-//       selectedAnswer: ansElement[selectedOptions[index]] !== undefined ? q.options[selectedOptions[index]] : 'Not attempted'
-//   }));
-//   userData.marks = score;
-//   userData.timeSpent = formatTime(totalTime);
-//   localStorage.setItem(userEmail, JSON.stringify(userData));
-// };
 
 // const getUserActivity = (userEmail) => {
 //   return JSON.parse(localStorage.getItem(userEmail)) || {};
@@ -416,16 +398,16 @@ reviewBtn.addEventListener("click", () => {
 //   const reviewContainer = document.getElementById('review-container');
 //   reviewContainer.innerHTML = `
 //       <h2>Review Your Quiz</h2>
-//       
+      
 //       <p>Total Time Spent: ${userData.timeSpent}</p>
-      // <ol>
-      //     ${userData.questions.map((q, index) => `
-      //         <li>
-      //             <p>${q.question}</p>
-      //             <p>Correct Answer: ${q.correctAnswer}</p>
-      //             <p>Your Answer: ${q.selectedAnswer}</p>
-      //         </li>
-      //     `).join('')}
-      // </ol>
+//       <ol>
+//           ${userData.questions.map((q, index) => `
+//               <li>
+//                   <p>${q.question}</p>
+//                   <p>Correct Answer: ${q.correctAnswer}</p>
+//                   <p>Your Answer: ${q.selectedAnswer}</p>
+//               </li>
+//           `).join('')}
+//       </ol>
 //   `;
 // };
