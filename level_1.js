@@ -219,17 +219,26 @@ const updateUserActivity = (userEmail) => {
   const correctanswer=currentQuestion.options[questions[curQuestion].answer];
   
  
-  
-
-  userData.questions = userData.questions || [];
-  userData.questions.push({
+  userData['quick-quiz'] = userData['quick-quiz'] || {};
+  userData['quick-quiz'].questions = userData['quick-quiz'].questions || [];
+  userData['quick-quiz'].questions.push({
     question: currentQuestion.question,
-    // selectedOption: selectedOptions[curQuestion],
-    selectedOption: currentQuestion.options[selectedOptions[curQuestion] ],
-    points :marks,
-    answer:correctanswer,
+    selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
+    points: marks,
+    answer: correctanswer,
     timer: timerElement.innerText
   });
+
+
+  // userData.questions = userData.questions || [];
+  // userData.questions.push({
+  //   question: currentQuestion.question,
+  //   // selectedOption: selectedOptions[curQuestion],
+  //   selectedOption: currentQuestion.options[selectedOptions[curQuestion] ],
+  //   points :marks,
+  //   answer:correctanswer,
+  //   timer: timerElement.innerText
+  // });
   
   localStorage.setItem(userEmail, JSON.stringify(userData)); // Store the updated user data in local storage
 };
