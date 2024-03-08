@@ -1,5 +1,4 @@
 const analyzeBtn = document.getElementById("analyze-btn");
-
 analyzeBtn.addEventListener("click", () => {
     const getUserActivity = (userEmail) => {
         const userData = JSON.parse(localStorage.getItem(userEmail)) || {};
@@ -24,36 +23,29 @@ analyzeBtn.addEventListener("click", () => {
 
     const displayUserActivity = (userEmail) => {
         const userData = getUserActivity(userEmail);
-        const reviewContainer = document.getElementById('review-container');
+        const correctQuestionsContainer = document.getElementById('correct-questions');
+        const wrongQuestionsContainer = document.getElementById('wrong-questions');
+        const graphContainer = document.getElementById('graph');
 
-        // if (userData && userData.questions && userData.questions.length > 0) {
-        //     const correctAnswers = userData.questions.filter(q => q.correct);
-        //     const wrongAnswers = userData.questions.filter(q => !q.correct);
-
-        if (userData && userData['quick-quiz'] && userData['quick-quiz'].questions && userData['quick-quiz'].questions.length > 0) {
-            const correctAnswers = userData['quick-quiz'].questions.filter(q => q.points === 1);
-            const wrongAnswers = userData['quick-quiz'].questions.filter(q => q.points === 0);
-
-
-
+        if (userData && userData.questions && userData.questions.length > 0) {
+            const correctAnswers = userData.questions.filter(q => q.correct);
+            const wrongAnswers = userData.questions.filter(q => !q.correct);
 
             const correctQuestionsHTML = correctAnswers.map(q => `
                 <li class="correct-answer">
-                <p>${q.question}</p>
-                <p>Your Answer: ${q.selectedOption}</p>
-                <p>Total Time Spent: ${q.timer}</p>
-                <p>Correct Answer: ${q.answer}</p>
-                  
+                    <p>Total Time Spent: ${q.timer}</p>
+                    <p>${q.question}</p>
+                    <p>Correct Answer: ${q.answer}</p>
+                    <p>Your Answer: ${q.selectedOption}</p>
                 </li>
             `).join('');
 
             const wrongQuestionsHTML = wrongAnswers.map(q => `
                 <li class="wrong-answer">
-                <p>${q.question}</p>
-                <p>Your Answer: ${q.selectedOption}</p>
-                <p>Total Time Spent: ${q.timer}</p>
-                <p>Correct Answer: ${q.answer}</p>
-                  
+                    <p>Total Time Spent: ${q.timer}</p>
+                    <p>${q.question}</p>
+                    <p>Correct Answer: ${q.answer}</p>
+                    <p>Your Answer: ${q.selectedOption}</p>
                 </li>
             `).join('');
 
@@ -73,17 +65,11 @@ analyzeBtn.addEventListener("click", () => {
                 </div>
             `;
         } else {
-            reviewContainer.innerHTML = "<p>No quiz data available for review.</p>";
+            correctQuestionsContainer.innerHTML = "<p>No quiz data available for review.</p>";
+            wrongQuestionsContainer.innerHTML = "<p>No quiz data available for review.</p>";
         }
     };
 
     const userEmail = localStorage.getItem("userEmail");
     displayUserActivity(userEmail);
 });
-
-const homeBtn = document.getElementById("home-btn");
-
-homeBtn.addEventListener("click", () => {
-    window.location.href = "index.html";
-});
-
