@@ -232,9 +232,9 @@ const questions=[
       const correctanswer = currentQuestion.options[questions[curQuestion].answer];
       
       userData['AOA_level1'] = userData['AOA_level1'] || {}; // Create 'subject' object if it doesn't exist
-      userData['subject'].level = userData['AOA_level1'].level || {}; // Create 'level' object if it doesn't exist
-      userData['subject'].level.questions = userData['AOA_level1'].level.questions || []; // Create 'questions' array if it doesn't exist
-      userData['subject'].level.questions.push({
+      userData['AOA_level1'].level1 = userData['AOA_level1'].level1 || {}; // Create 'level' object if it doesn't exist
+      userData['AOA_level1'].level1.questions = userData['AOA_level1'].level1.questions || []; // Create 'questions' array if it doesn't exist
+      userData['AOA_level1'].level1.questions.push({
           question: currentQuestion.question,
           selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
           points: marks,
