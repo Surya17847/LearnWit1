@@ -207,45 +207,7 @@ const questions=[
     } 
     
     });
-    
-    // Function to update user data in local storage
-    const updateUserActivity = (userEmail) => {
-      // const userData = JSON.parse(localStorage.getItem(userEmail)) || {}; // Retrieve existing user data or create a new object
-      // const currentQuestion = questions[curQuestion];
-      // const selectedOptionIndex = selectedOptions[curQuestion];
-      // const correctanswer=currentQuestion.options[questions[curQuestion].answer];
-      
-     
-      // userData['quick-quiz'] = userData['quick-quiz'] || {};
-      // userData['quick-quiz'].questions = userData['quick-quiz'].questions || [];
-      // userData['quick-quiz'].questions.push({
-      //   question: currentQuestion.question,
-      //   selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
-      //   points: marks,
-      //   answer: correctanswer,
-      //   timer: timerElement.innerText
-      // });
-    
-      const userData = JSON.parse(localStorage.getItem(userEmail)) || {}; // Retrieve existing user data or create a new object
-      const currentQuestion = questions[curQuestion];
-      const selectedOptionIndex = selectedOptions[curQuestion];
-      const correctanswer = currentQuestion.options[questions[curQuestion].answer];
-      
-      userData['AOA_level1'] = userData['AOA_level1'] || {}; // Create 'subject' object if it doesn't exist
-      userData['AOA_level1'].level1 = userData['AOA_level1'].level1 || {}; // Create 'level' object if it doesn't exist
-      userData['AOA_level1'].level1.questions = userData['AOA_level1'].level1.questions || []; // Create 'questions' array if it doesn't exist
-      userData['AOA_level1'].level1.questions.push({
-          question: currentQuestion.question,
-          selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
-          points: marks,
-          answer: correctanswer,
-          timer: timerElement.innerText
-      });
-      
-      
-      localStorage.setItem(userEmail, JSON.stringify(userData)); // Store the updated user data in local storage
-    };
-    
+
     
     submitBtn.addEventListener("click", () => {
       stopTimer();
