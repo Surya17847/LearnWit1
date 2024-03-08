@@ -5,7 +5,7 @@ analyzeBtn.addEventListener("click", () => {
         
         const userData = JSON.parse(localStorage.getItem(userEmail)) || {};
         const uniqueQuestions = new Set(); // Set to store encountered questions
-        const questions = userData['py_level1']?.level1?.questions || [];
+        const questions = userData[userEmail]?.['py_level1']?.['level1']?.questions || [];
         
         const uniqueQuestionData = [];
         // Iterate through questions array starting from the last index
@@ -17,7 +17,7 @@ analyzeBtn.addEventListener("click", () => {
             }
         }
         
-        userData['py_level1'].level1 = { questions: uniqueQuestionData }; // Update userData with unique questions
+        userData[userEmail]['py_level1']['level1'] = { questions: uniqueQuestionData }; // Update userData with unique questions
         return userData;
     };
 
@@ -27,11 +27,11 @@ analyzeBtn.addEventListener("click", () => {
         const wrongQuestionsContainer = document.getElementById('wrong-questions');
         const graphContainer = document.getElementById('graph');
 
-        if (userData && userData['py_level1'] && userData['py_level1'].level1 && userData['py_level1'].level1 .questions && userData['py_level1'].level1.questions.length > 0) {
+        if (userData && userData[userEmail] && userData[userEmail]['py_level1'] && userData[userEmail]['py_level1']['level1'] && userData[userEmail]['py_level1']['level1'].questions && userData[userEmail]['py_level1']['level1'].questions.length > 0) {
             let totalCorrect = 0;
             let totalWrong = 0;
 
-            userData['py_level1'].level1.questions.forEach(q => {
+            userData[userEmail]['py_level1']['level1'].questions.forEach(q => {
                 const isCorrect = q.answer === q.selectedOption;
                 const boxColor = isCorrect ? '#0acb51' : '#b13030';
                 const questionHTML = `
@@ -90,5 +90,5 @@ analyzeBtn.addEventListener("click", () => {
 const homeBtn = document.getElementById("home-btn");
 
 homeBtn.addEventListener("click", () => {
-    window.location.href = "index.html";
+    window.location.href = "subject.html";
 });

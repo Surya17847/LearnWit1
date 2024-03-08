@@ -224,24 +224,43 @@ const questions=[
     
     // Function to update user data in local storage
     const updateUserActivity = (userEmail) => {
+
     
+      // const userData = JSON.parse(localStorage.getItem(userEmail)) || {}; // Retrieve existing user data or create a new object
+      // const currentQuestion = questions[curQuestion];
+      // const selectedOptionIndex = selectedOptions[curQuestion];
+      // const correctanswer = currentQuestion.options[questions[curQuestion].answer];
+      
+      // userData['py_level1'] = userData['py_level1'] || {}; // Create 'subject' object if it doesn't exist
+      // userData['py_level1'].level1 = userData['py_level1'].level1 || {}; // Create 'level' object if it doesn't exist
+      // userData['py_level1'].level1.questions = userData['py_level1'].level1.questions || []; // Create 'questions' array if it doesn't exist
+      // userData['py_level1'].level1.questions.push({
+      //     question: currentQuestion.question,
+      //     selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
+      //     points: marks,
+      //     answer: correctanswer,
+      //     timer: timerElement.innerText
+      // });
+      
       const userData = JSON.parse(localStorage.getItem(userEmail)) || {}; // Retrieve existing user data or create a new object
-      const currentQuestion = questions[curQuestion];
-      const selectedOptionIndex = selectedOptions[curQuestion];
-      const correctanswer = currentQuestion.options[questions[curQuestion].answer];
-      
-      userData['py_level1'] = userData['py_level1'] || {}; // Create 'subject' object if it doesn't exist
-      userData['py_level1'].level1 = userData['py_level1'].level1 || {}; // Create 'level' object if it doesn't exist
-      userData['py_level1'].level1.questions = userData['py_level1'].level1.questions || []; // Create 'questions' array if it doesn't exist
-      userData['py_level1'].level1.questions.push({
-          question: currentQuestion.question,
-          selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
-          points: marks,
-          answer: correctanswer,
-          timer: timerElement.innerText
-      });
-      
-      
+const currentQuestion = questions[curQuestion];
+const selectedOptionIndex = selectedOptions[curQuestion];
+const correctanswer = currentQuestion.options[questions[curQuestion].answer];
+
+userData[userEmail] = userData[userEmail] || {}; // Create 'userEmail' object if it doesn't exist
+userData[userEmail]['py_level1'] = userData[userEmail]['py_level1'] || {}; // Create 'subject' object if it doesn't exist
+userData[userEmail]['py_level1']['level1'] = userData[userEmail]['py_level1']['level1'] || {}; // Create 'level' object if it doesn't exist
+userData[userEmail]['py_level1']['level1'].questions = userData[userEmail]['py_level1']['level1'].questions || []; // Create 'questions' array if it doesn't exist
+userData[userEmail]['py_level1']['level1'].questions.push({
+    question: currentQuestion.question,
+    selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
+    points: marks,
+    answer: correctanswer,
+    timer: timerElement.innerText
+});
+
+// localStorage.setItem(userEmail, JSON.stringify(userData)); // Store the updated user data in local storage
+
       localStorage.setItem(userEmail, JSON.stringify(userData)); // Store the updated user data in local storage
     };
     
@@ -347,7 +366,7 @@ const questions=[
           <h3>Your score is ${marksObtained}/${totalQuestions}</h3>
           <button class="reload-button" onclick="location.reload()">Play Again</button>
           <a href="subject.html" id="home"><button id="home-btn">HOME</button></a>
-          <a href="py_l1_review.html" ><button>REVIEW</button></a>
+          <a href="review.html" ><button>REVIEW</button></a>
           <canvas id="pieChart" width="250" height="250"></canvas>
         
         </div>

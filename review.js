@@ -107,7 +107,7 @@ analyzeBtn.addEventListener("click", () => {
         
         const userData = JSON.parse(localStorage.getItem(userEmail)) || {};
         const uniqueQuestions = new Set(); // Set to store encountered questions
-        const questions = userData['quick-quiz']?.questions || [];
+        const questions = userData[userEmail]?.['quick-quiz']?.questions || [];
         
         const uniqueQuestionData = [];
         // Iterate through questions array starting from the last index
@@ -119,7 +119,7 @@ analyzeBtn.addEventListener("click", () => {
             }
         }
         
-        userData['quick-quiz'] = { questions: uniqueQuestionData }; // Update userData with unique questions
+        userData[userEmail]['quick-quiz'] = { questions: uniqueQuestionData }; // Update userData with unique questions
         return userData;
     };
 
@@ -129,11 +129,11 @@ analyzeBtn.addEventListener("click", () => {
         const wrongQuestionsContainer = document.getElementById('wrong-questions');
         const graphContainer = document.getElementById('graph');
 
-        if (userData && userData['quick-quiz'] && userData['quick-quiz'].questions && userData['quick-quiz'].questions.length > 0) {
+        if (userData && userData[userEmail] && userData[userEmail]['quick-quiz'] && userData[userEmail]['quick-quiz'].questions && userData[userEmail]['quick-quiz'].questions.length > 0) {
             let totalCorrect = 0;
             let totalWrong = 0;
 
-            userData['quick-quiz'].questions.forEach(q => {
+            userData[userEmail]['quick-quiz'].questions.forEach(q => {
                 const isCorrect = q.answer === q.selectedOption;
                 const boxColor = isCorrect ? '#0acb51' : '#b13030';
                 const questionHTML = `

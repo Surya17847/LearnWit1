@@ -206,25 +206,43 @@ displayPreviousAnswer(); // Display the previous selected answer
 
 // Function to update user data in local storage
 const updateUserActivity = (userEmail) => {
+  // const userData = JSON.parse(localStorage.getItem(userEmail)) || {}; // Retrieve existing user data or create a new object
+  // const currentQuestion = questions[curQuestion];
+  // const selectedOptionIndex = selectedOptions[curQuestion];
+  // const correctanswer=currentQuestion.options[questions[curQuestion].answer];
+  
+ 
+  // userData['quick-quiz'] = userData['quick-quiz'] || {};
+  // userData['quick-quiz'].questions = userData['quick-quiz'].questions || [];
+  // userData['quick-quiz'].questions.push({
+  //   question: currentQuestion.question,
+  //   selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
+  //   points: marks,
+  //   answer: correctanswer,
+  //   timer: timerElement.innerText
+  // });
+
   const userData = JSON.parse(localStorage.getItem(userEmail)) || {}; // Retrieve existing user data or create a new object
   const currentQuestion = questions[curQuestion];
   const selectedOptionIndex = selectedOptions[curQuestion];
-  const correctanswer=currentQuestion.options[questions[curQuestion].answer];
+  const correctanswer = currentQuestion.options[questions[curQuestion].answer];
   
- 
-  userData['quick-quiz'] = userData['quick-quiz'] || {};
-  userData['quick-quiz'].questions = userData['quick-quiz'].questions || [];
-  userData['quick-quiz'].questions.push({
-    question: currentQuestion.question,
-    selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
-    points: marks,
-    answer: correctanswer,
-    timer: timerElement.innerText
+  userData[userEmail] = userData[userEmail] || {}; // Create 'userEmail' object if it doesn't exist
+  userData[userEmail]['quick-quiz'] = userData[userEmail]['quick-quiz'] || {}; // Create 'subject' object if it doesn't exist
+  // userData[userEmail][subject][level] = userData[userEmail][subject][level] || {}; // Create 'level' object if it doesn't exist
+  userData[userEmail]['quick-quiz'].questions = userData[userEmail]['quick-quiz'].questions || []; // Create 'questions' array if it doesn't exist
+  userData[userEmail]['quick-quiz'].questions.push({
+      question: currentQuestion.question,
+      selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
+      points: marks,
+      answer: correctanswer,
+      timer: timerElement.innerText
   });
-
-
   
   localStorage.setItem(userEmail, JSON.stringify(userData)); // Store the updated user data in local storage
+  
+  
+  // localStorage.setItem(userEmail, JSON.stringify(userData)); // Store the updated user data in local storage
 };
 
 
