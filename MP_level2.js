@@ -240,10 +240,10 @@ const currentQuestion = questions[curQuestion];
 const selectedOptionIndex = selectedOptions[curQuestion];
 const correctanswer = currentQuestion.options[questions[curQuestion].answer];
 
-userData[userEmail] = userData[user2mail] || {}; // Create 'userEmail' object if it doesn't exist
+userData[userEmail] = userData[userEmail] || {}; // Create 'userEmail' object if it doesn't exist
 userData[userEmail]['MP_level2'] = userData[userEmail]['MP_level2'] || {}; // Create 'subject' object if it doesn't exist
 userData[userEmail]['MP_level2']['level2'] = userData[userEmail]['MP_level2']['level2'] || {}; // Create 'level' object if it doesn't exist
-userData[userEmail]['MP_level2']['level2'].questions = userData[userEmail]['MP_level']['level2'].questions || []; // Create 'questions' array if it doesn't exist
+userData[userEmail]['MP_level2']['level2'].questions = userData[userEmail]['MP_level2']['level2'].questions || []; // Create 'questions' array if it doesn't exist
 userData[userEmail]['MP_level2']['level2'].questions.push({
 question: currentQuestion.question,
 selectedOption: currentQuestion.options[selectedOptions[curQuestion]],
