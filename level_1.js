@@ -146,7 +146,7 @@ const displayPreviousAnswer = () => {
 
 
 prevBtn.addEventListener("click", () => {
-  
+  score--;
   stopTimer();
   curQuestion--;
   if (curQuestion >= 0) {
@@ -168,9 +168,6 @@ if (curQuestion === questions.length - 1) {
   nextBtn.style.display = "block";
 }
 };
-
-
-
 
 
 
@@ -382,32 +379,3 @@ const displayResult = () => {
 
 
 
-
-
-
-
-
-
-
-// const getUserActivity = (userEmail) => {
-//   return JSON.parse(localStorage.getItem(userEmail)) || {};
-// };
-
-// const displayUserActivity = (userEmail) => {
-//   const userData = getUserActivity();
-//   const reviewContainer = document.getElementById('review-container');
-//   reviewContainer.innerHTML = `
-//       <h2>Review Your Quiz</h2>
-      
-//       <p>Total Time Spent: ${userData.timeSpent}</p>
-//       <ol>
-//           ${userData.questions.map((q, index) => `
-//               <li>
-//                   <p>${q.question}</p>
-//                   <p>Correct Answer: ${q.correctAnswer}</p>
-//                   <p>Your Answer: ${q.selectedAnswer}</p>
-//               </li>
-//           `).join('')}
-//       </ol>
-//   `;
-// };
