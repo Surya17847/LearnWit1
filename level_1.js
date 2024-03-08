@@ -80,7 +80,6 @@ const displayQuestion = () => {
 startTimer();
 const { question, options } = questions[curQuestion];
 queElement.innerText = `${curQuestion + 1}: ${question}`;
-// options.forEach((curOption, index) => (window[`option${index + 1}`].innerText = curOption));
 options.forEach((curOption, index) => {
   const optionElement = window[`option${index + 1}`];
   optionElement.innerText = curOption;
@@ -89,7 +88,6 @@ options.forEach((curOption, index) => {
 prevBtn.style.display = curQuestion === 0 ? "none" : "block";
 
 
-// startTimer(); // Start the timer when displaying a new question
 };
 
 
@@ -195,19 +193,14 @@ let useremail= localStorage.getItem("userEmail");
   updateUserActivity(useremail);
 curQuestion++;
 if (curQuestion < questions.length) {
-  // deselectAnswers();
   
   
   
   displayQuestion();
 displayPreviousAnswer(); // Display the previous selected answer
 
-  // deselectAnswers();
   displayNextButton(); // Display next button if it's not the last question
 } 
-// else {
-//   displayResult();
-// }
 
 });
 
@@ -230,15 +223,6 @@ const updateUserActivity = (userEmail) => {
   });
 
 
-  // userData.questions = userData.questions || [];
-  // userData.questions.push({
-  //   question: currentQuestion.question,
-  //   // selectedOption: selectedOptions[curQuestion],
-  //   selectedOption: currentQuestion.options[selectedOptions[curQuestion] ],
-  //   points :marks,
-  //   answer:correctanswer,
-  //   timer: timerElement.innerText
-  // });
   
   localStorage.setItem(userEmail, JSON.stringify(userData)); // Store the updated user data in local storage
 };
@@ -351,11 +335,7 @@ const displayResult = () => {
     
   `;
   
-  // const reviewBtn = document.querySelector("#review-btn");
-  // reviewBtn.addEventListener("click", displayReview);
-  
-  // Generate the pie chart
-  
+ 
   const pieChartCanvas = document.getElementById("pieChart");
   const ctx = pieChartCanvas.getContext("2d");
   new Chart(ctx, {
@@ -376,12 +356,9 @@ const displayResult = () => {
       }
     }
   });
-  // const reviewBtn = document.querySelector("#review-btn");
-  // reviewBtn.addEventListener("click", displayReview);
+  
   };
-  // function signup() {
-  // const userEmail = document.getElementById("signupEmail").value;
-  // }
+ 
   
 
 
