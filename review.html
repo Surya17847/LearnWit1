@@ -13,19 +13,28 @@
         <button id="logoutBtn" class="btn btn-outline-light"><a href="index.html">Logout</a></button>
     </nav>
     <div class="reviewpage">
-        <button id="analyze-btn" class="btn btn-primary">Analyze Your Result</button>
+        <button id="analyze-btn" class="btn btn-primary">Result Analysis</button>
         <div id="review-container" class="review-container">
-            <!-- Review content will be displayed here -->
+            <div id="correct-questions" class="question-section">
+                <h3>Correct Answers</h3>
+                <!-- Correct questions will be displayed here -->
+            </div>
+            <div id="wrong-questions" class="question-section">
+                <h3>Incorrect Answers</h3>
+                <!-- Incorrect questions will be displayed here -->
+            </div>
         </div>
-        <div id="graph-container" class="graph-container">
-            <!-- Graph will be displayed here -->
+        <div class="graph-container">
+            <canvas id="graph"></canvas>
         </div>
         <div id="home-btn-container">
-            <button id="home-btn" class="btn btn-outline-light">Go to Home</button>
+            <button id="home-btn" class="btn btn-outline-light" >Go to Home</button>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="review.js"></script>
     <script src="level_1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 </html>

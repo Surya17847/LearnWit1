@@ -145,8 +145,7 @@ const displayPreviousAnswer = () => {
 
 
 
-prevBtn.addEventListener("click", () => {
-  
+prevBtn.addEventListener("click", () => {  
   stopTimer();
   curQuestion--;
   if (curQuestion >= 0) {
@@ -175,17 +174,12 @@ if (curQuestion === questions.length - 1) {
 
 
 nextBtn.addEventListener("click", () => {
- 
 stopTimer(); // Stop the timer when moving to the next question
 
 const selectedOptionIndex = getSelectedOption();
-
-    
 if (selectedOptionIndex !== undefined) {
     selectedOptions[curQuestion] = selectedOptionIndex; // Store the selected option
 }
-
-
 if (selectedOptionIndex === questions[curQuestion].answer) {
   marks=1;
   score++;
@@ -198,9 +192,7 @@ let useremail= localStorage.getItem("userEmail");
   updateUserActivity(useremail);
 curQuestion++;
 if (curQuestion < questions.length) {
-  // deselectAnswers();
-  
-  
+  // deselectAnswers(); 
   
   displayQuestion();
 displayPreviousAnswer(); // Display the previous selected answer
@@ -208,10 +200,6 @@ displayPreviousAnswer(); // Display the previous selected answer
   // deselectAnswers();
   displayNextButton(); // Display next button if it's not the last question
 } 
-// else {
-//   displayResult();
-// }
-
 });
 
 // Function to update user data in local storage
