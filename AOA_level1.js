@@ -295,7 +295,27 @@ userData[userEmail]['AOA_level1']['level1'].questions.push({
       const incorrectAnswers = totalQuestions - marksObtained;
       const correctPercentage = ((marksObtained / totalQuestions) * 100).toFixed(2);
       const incorrectPercentage = ((incorrectAnswers / totalQuestions) * 100).toFixed(2);
-      
+    //   const getUserActivity = (userEmail) => {
+        
+    //     const userData = JSON.parse(localStorage.getItem(userEmail)) || {};
+    //     const uniqueQuestions = new Set(); // Set to store encountered questions
+    //     const questions = userData[userEmail]?.['AOA_level1']?.['level1']?.questions || [];
+        
+    //     const uniqueQuestionData = [];
+    //     // Iterate through questions array starting from the last index
+    //     for (let i = questions.length - 1; i >= 0; i--) {
+    //         const question = questions[i];
+    //         if (!uniqueQuestions.has(question.question)) {
+    //             uniqueQuestions.add(question.question);
+    //             uniqueQuestionData.unshift(question); // Add question to the beginning of uniqueQuestionData array
+    //         }
+    //     }
+        
+    //     userData[userEmail]['AOA_level1']['level1'] = { questions: uniqueQuestionData }; // Update userData with unique questions
+    //     return userData;
+    // // };
+    // const userEmail = localStorage.getItem("userEmail");
+    // displayUserActivity(userEmail);
       quiz.innerHTML = `
         <link rel="stylesheet" type="text/css" href="styles.css"></link>
         <link rel="stylesheet" type="text/css" href="SCORE.css"></link>
